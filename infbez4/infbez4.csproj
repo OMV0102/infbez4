@@ -92,15 +92,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Form_browser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_browser.Designer.cs">
+      <DependentUpon>Form_browser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_log_in.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form_log_in.Designer.cs">
       <DependentUpon>Form_log_in.cs</DependentUpon>
     </Compile>
+    <Compile Include="functions.cs" />
     <Compile Include="global.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form_browser.resx">
+      <DependentUpon>Form_browser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_log_in.resx">
       <DependentUpon>Form_log_in.cs</DependentUpon>
     </EmbeddedResource>
@@ -138,9 +148,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="query.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
