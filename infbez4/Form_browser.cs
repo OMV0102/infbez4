@@ -26,5 +26,41 @@ namespace infbez4
         {
             Application.Exit();
         }
+
+        // при загрузке формы
+        private void Form_browser_Load(object sender, EventArgs e)
+        {
+            webBrowser1.Url = new Uri("http://yandex.ru");
+        }
+
+        // кнопка НАЗАД
+        private void btn_prev_Click(object sender, EventArgs e)
+        {
+            webBrowser1.GoBack();
+        }
+
+        // кнопка Вперед
+        private void btn_next_Click(object sender, EventArgs e)
+        {
+            webBrowser1.GoForward();
+        }
+
+        // если нажали Enter после ввода URL
+        private void txt_url_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(txt_url.Text.Length > 0 )
+            {
+                if(e.KeyChar == 13)
+                {
+                    webBrowser1.Navigate(txt_url.Text, false);
+                }
+            }
+        }
+
+        // кнопка перейти к поисковику по умолчанию
+        private void btn_GoHome_Click(object sender, EventArgs e)
+        {
+            webBrowser1.GoHome();
+        }
     }
 }
