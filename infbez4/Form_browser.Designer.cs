@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_browser));
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.txt_url = new System.Windows.Forms.TextBox();
             this.btn_prev = new System.Windows.Forms.Button();
             this.btn_next = new System.Windows.Forms.Button();
             this.btn_GoHome = new System.Windows.Forms.Button();
+            this.btn_refresh = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // webBrowser1
@@ -63,6 +65,7 @@
             this.txt_url.Name = "txt_url";
             this.txt_url.Size = new System.Drawing.Size(967, 30);
             this.txt_url.TabIndex = 1;
+            this.txt_url.TabStop = false;
             this.txt_url.Text = "google.ru";
             this.txt_url.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_url_KeyPress);
             // 
@@ -79,6 +82,7 @@
             this.btn_prev.Name = "btn_prev";
             this.btn_prev.Size = new System.Drawing.Size(43, 43);
             this.btn_prev.TabIndex = 2;
+            this.btn_prev.TabStop = false;
             this.btn_prev.Text = "";
             this.btn_prev.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_prev.UseVisualStyleBackColor = false;
@@ -97,6 +101,7 @@
             this.btn_next.Name = "btn_next";
             this.btn_next.Size = new System.Drawing.Size(43, 43);
             this.btn_next.TabIndex = 3;
+            this.btn_next.TabStop = false;
             this.btn_next.Text = "";
             this.btn_next.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_next.UseVisualStyleBackColor = false;
@@ -105,20 +110,35 @@
             // btn_GoHome
             // 
             this.btn_GoHome.BackColor = System.Drawing.Color.Gray;
+            this.btn_GoHome.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_GoHome.BackgroundImage")));
+            this.btn_GoHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_GoHome.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_GoHome.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.btn_GoHome.FlatAppearance.BorderSize = 0;
             this.btn_GoHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_GoHome.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_GoHome.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.btn_GoHome.Location = new System.Drawing.Point(96, -7);
+            this.btn_GoHome.Location = new System.Drawing.Point(91, -1);
             this.btn_GoHome.Name = "btn_GoHome";
-            this.btn_GoHome.Size = new System.Drawing.Size(43, 43);
+            this.btn_GoHome.Size = new System.Drawing.Size(40, 40);
             this.btn_GoHome.TabIndex = 4;
-            this.btn_GoHome.Text = "h";
+            this.btn_GoHome.TabStop = false;
             this.btn_GoHome.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_GoHome.UseVisualStyleBackColor = false;
             this.btn_GoHome.Click += new System.EventHandler(this.btn_GoHome_Click);
+            // 
+            // btn_refresh
+            // 
+            this.btn_refresh.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_refresh.BackgroundImage")));
+            this.btn_refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_refresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_refresh.Location = new System.Drawing.Point(152, 1);
+            this.btn_refresh.Name = "btn_refresh";
+            this.btn_refresh.Size = new System.Drawing.Size(35, 35);
+            this.btn_refresh.TabIndex = 87;
+            this.btn_refresh.TabStop = false;
+            this.btn_refresh.UseVisualStyleBackColor = true;
+            this.btn_refresh.Click += new System.EventHandler(this.btn_refresh_Click);
             // 
             // Form_browser
             // 
@@ -126,11 +146,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(1180, 538);
-            this.Controls.Add(this.btn_GoHome);
+            this.Controls.Add(this.btn_refresh);
             this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.txt_url);
             this.Controls.Add(this.btn_next);
             this.Controls.Add(this.btn_prev);
+            this.Controls.Add(this.btn_GoHome);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.HelpButton = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -150,5 +171,6 @@
         private System.Windows.Forms.Button btn_prev;
         private System.Windows.Forms.Button btn_next;
         private System.Windows.Forms.Button btn_GoHome;
+        private System.Windows.Forms.Button btn_refresh;
     }
 }

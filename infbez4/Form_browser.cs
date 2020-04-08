@@ -30,19 +30,22 @@ namespace infbez4
         // при загрузке формы
         private void Form_browser_Load(object sender, EventArgs e)
         {
-            webBrowser1.Url = new Uri("http://yandex.ru");
+            webBrowser1.Navigate(txt_url.Text);
         }
 
         // кнопка НАЗАД
         private void btn_prev_Click(object sender, EventArgs e)
         {
             webBrowser1.GoBack();
+            
+            txt_url.Text = webBrowser1.Url.ToString();
         }
 
         // кнопка Вперед
         private void btn_next_Click(object sender, EventArgs e)
         {
             webBrowser1.GoForward();
+            txt_url.Text = webBrowser1.Url.ToString();
         }
 
         // если нажали Enter после ввода URL
@@ -53,6 +56,7 @@ namespace infbez4
                 if(e.KeyChar == 13)
                 {
                     webBrowser1.Navigate(txt_url.Text, false);
+                    txt_url.Text = webBrowser1.Url.ToString();
                 }
             }
         }
@@ -61,6 +65,13 @@ namespace infbez4
         private void btn_GoHome_Click(object sender, EventArgs e)
         {
             webBrowser1.GoHome();
+            txt_url.Text = webBrowser1.Url.ToString();
+        }
+
+        // кнопка ОБНОВИТЬ
+        private void btn_refresh_Click(object sender, EventArgs e)
+        {
+            webBrowser1.Refresh();
         }
     }
 }
