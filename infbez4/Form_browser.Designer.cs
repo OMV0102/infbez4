@@ -52,11 +52,11 @@
             this.webBrowser1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.webBrowser1.IsWebBrowserContextMenuEnabled = false;
             this.webBrowser1.Location = new System.Drawing.Point(0, 41);
             this.webBrowser1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(30, 31);
             this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.ScriptErrorsSuppressed = true;
             this.webBrowser1.Size = new System.Drawing.Size(1180, 502);
             this.webBrowser1.TabIndex = 0;
             this.webBrowser1.TabStop = false;
@@ -90,8 +90,8 @@
             this.btn_prev.FlatAppearance.BorderSize = 0;
             this.btn_prev.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_prev.Font = new System.Drawing.Font("Wingdings 3", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.btn_prev.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.btn_prev.Location = new System.Drawing.Point(-4, -7);
+            this.btn_prev.ForeColor = System.Drawing.Color.Black;
+            this.btn_prev.Location = new System.Drawing.Point(-4, -4);
             this.btn_prev.Name = "btn_prev";
             this.btn_prev.Size = new System.Drawing.Size(43, 43);
             this.btn_prev.TabIndex = 2;
@@ -109,8 +109,8 @@
             this.btn_next.FlatAppearance.BorderSize = 0;
             this.btn_next.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_next.Font = new System.Drawing.Font("Wingdings 3", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.btn_next.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.btn_next.Location = new System.Drawing.Point(38, -7);
+            this.btn_next.ForeColor = System.Drawing.Color.Black;
+            this.btn_next.Location = new System.Drawing.Point(38, -4);
             this.btn_next.Name = "btn_next";
             this.btn_next.Size = new System.Drawing.Size(43, 43);
             this.btn_next.TabIndex = 3;

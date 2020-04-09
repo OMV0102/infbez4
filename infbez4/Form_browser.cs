@@ -26,6 +26,7 @@ namespace infbez4
             webBrowser1.DocumentTitleChanged += new EventHandler(webBrowser1_DocumentTitleChanged);
             webBrowser1.StatusTextChanged += new EventHandler(webBrowser1_StatusTextChanged);
 
+            webBrowser1.Navigate(global.searchDefault);
         }
 
         private Guid user_id;
@@ -51,14 +52,12 @@ namespace infbez4
         private void btn_prev_Click(object sender, EventArgs e)
         {
             webBrowser1.GoBack();
-            txt_url.Text = webBrowser1.Url.ToString();
         }
 
         // кнопка Вперед
         private void btn_next_Click(object sender, EventArgs e)
         {
             webBrowser1.GoForward();
-            txt_url.Text = webBrowser1.Url.ToString();
         }
 
         // если нажали Enter после ввода URL
@@ -83,7 +82,6 @@ namespace infbez4
         // кнопка перейти к поисковику по умолчанию
         private void btn_GoHome_Click(object sender, EventArgs e)
         {
-            txt_url.Text = global.searchDefault;
             webBrowser1.Navigate(global.searchDefault);
         }
 
