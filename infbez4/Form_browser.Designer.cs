@@ -28,14 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_browser));
+            this.components = new System.ComponentModel.Container();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.txt_url = new System.Windows.Forms.TextBox();
             this.btn_prev = new System.Windows.Forms.Button();
             this.btn_next = new System.Windows.Forms.Button();
-            this.btn_GoHome = new System.Windows.Forms.Button();
-            this.btn_refreshOrStop = new System.Windows.Forms.Button();
             this.label_user_login = new System.Windows.Forms.Label();
+            this.contextMenu_user = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.dfgdfgToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dfgdfgToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.dfgdfgToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.dfgToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dfgdfgToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.dfgdfgToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.dfgdfgToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.btn_refreshOrStop = new System.Windows.Forms.Button();
+            this.btn_GoHome = new System.Windows.Forms.Button();
+            this.contextMenu_user.SuspendLayout();
             this.SuspendLayout();
             // 
             // webBrowser1
@@ -44,7 +53,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.webBrowser1.IsWebBrowserContextMenuEnabled = false;
-            this.webBrowser1.Location = new System.Drawing.Point(0, 36);
+            this.webBrowser1.Location = new System.Drawing.Point(0, 41);
             this.webBrowser1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(30, 31);
             this.webBrowser1.Name = "webBrowser1";
@@ -52,6 +61,10 @@
             this.webBrowser1.TabIndex = 0;
             this.webBrowser1.TabStop = false;
             this.webBrowser1.Url = new System.Uri("", System.UriKind.Relative);
+            this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
+            this.webBrowser1.Navigated += new System.Windows.Forms.WebBrowserNavigatedEventHandler(this.webBrowser1_Navigated);
+            this.webBrowser1.Navigating += new System.Windows.Forms.WebBrowserNavigatingEventHandler(this.webBrowser1_Navigating);
+            this.webBrowser1.NewWindow += new System.ComponentModel.CancelEventHandler(this.webBrowser1_NewWindow);
             // 
             // txt_url
             // 
@@ -67,7 +80,6 @@
             this.txt_url.Size = new System.Drawing.Size(796, 30);
             this.txt_url.TabIndex = 1;
             this.txt_url.TabStop = false;
-            this.txt_url.Text = "google.ru";
             this.txt_url.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_url_KeyPress);
             // 
             // btn_prev
@@ -108,10 +120,100 @@
             this.btn_next.UseVisualStyleBackColor = false;
             this.btn_next.Click += new System.EventHandler(this.btn_next_Click);
             // 
+            // label_user_login
+            // 
+            this.label_user_login.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label_user_login.BackColor = System.Drawing.Color.Transparent;
+            this.label_user_login.ContextMenuStrip = this.contextMenu_user;
+            this.label_user_login.Font = new System.Drawing.Font("Tahoma", 15F);
+            this.label_user_login.Location = new System.Drawing.Point(1034, 0);
+            this.label_user_login.Name = "label_user_login";
+            this.label_user_login.Size = new System.Drawing.Size(146, 36);
+            this.label_user_login.TabIndex = 88;
+            this.label_user_login.Text = "user_login";
+            this.label_user_login.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // contextMenu_user
+            // 
+            this.contextMenu_user.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.contextMenu_user.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dfgdfgToolStripMenuItem,
+            this.dfgdfgToolStripMenuItem1});
+            this.contextMenu_user.Name = "contextMenu_user";
+            this.contextMenu_user.Size = new System.Drawing.Size(125, 52);
+            // 
+            // dfgdfgToolStripMenuItem
+            // 
+            this.dfgdfgToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dfgdfgToolStripMenuItem4,
+            this.dfgToolStripMenuItem});
+            this.dfgdfgToolStripMenuItem.Name = "dfgdfgToolStripMenuItem";
+            this.dfgdfgToolStripMenuItem.Size = new System.Drawing.Size(124, 24);
+            this.dfgdfgToolStripMenuItem.Text = "dfgd";
+            // 
+            // dfgdfgToolStripMenuItem4
+            // 
+            this.dfgdfgToolStripMenuItem4.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dfgdfgToolStripMenuItem5});
+            this.dfgdfgToolStripMenuItem4.Name = "dfgdfgToolStripMenuItem4";
+            this.dfgdfgToolStripMenuItem4.Size = new System.Drawing.Size(124, 24);
+            this.dfgdfgToolStripMenuItem4.Text = "dfgdfg";
+            // 
+            // dfgdfgToolStripMenuItem5
+            // 
+            this.dfgdfgToolStripMenuItem5.Name = "dfgdfgToolStripMenuItem5";
+            this.dfgdfgToolStripMenuItem5.Size = new System.Drawing.Size(124, 24);
+            this.dfgdfgToolStripMenuItem5.Text = "dfgdfg";
+            // 
+            // dfgToolStripMenuItem
+            // 
+            this.dfgToolStripMenuItem.Name = "dfgToolStripMenuItem";
+            this.dfgToolStripMenuItem.Size = new System.Drawing.Size(124, 24);
+            this.dfgToolStripMenuItem.Text = "dfg";
+            // 
+            // dfgdfgToolStripMenuItem1
+            // 
+            this.dfgdfgToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dfgdfgToolStripMenuItem2,
+            this.dfgdfgToolStripMenuItem3});
+            this.dfgdfgToolStripMenuItem1.Name = "dfgdfgToolStripMenuItem1";
+            this.dfgdfgToolStripMenuItem1.Size = new System.Drawing.Size(124, 24);
+            this.dfgdfgToolStripMenuItem1.Text = "dfgdfg";
+            // 
+            // dfgdfgToolStripMenuItem2
+            // 
+            this.dfgdfgToolStripMenuItem2.Name = "dfgdfgToolStripMenuItem2";
+            this.dfgdfgToolStripMenuItem2.Size = new System.Drawing.Size(124, 24);
+            this.dfgdfgToolStripMenuItem2.Text = "dfgdfg";
+            // 
+            // dfgdfgToolStripMenuItem3
+            // 
+            this.dfgdfgToolStripMenuItem3.Name = "dfgdfgToolStripMenuItem3";
+            this.dfgdfgToolStripMenuItem3.Size = new System.Drawing.Size(124, 24);
+            this.dfgdfgToolStripMenuItem3.Text = "dfgdfg";
+            // 
+            // btn_refreshOrStop
+            // 
+            this.btn_refreshOrStop.BackColor = System.Drawing.Color.Gray;
+            this.btn_refreshOrStop.BackgroundImage = global::infbez4.Properties.Resources.arrow;
+            this.btn_refreshOrStop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_refreshOrStop.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_refreshOrStop.FlatAppearance.BorderSize = 0;
+            this.btn_refreshOrStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_refreshOrStop.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_refreshOrStop.Location = new System.Drawing.Point(131, 1);
+            this.btn_refreshOrStop.Name = "btn_refreshOrStop";
+            this.btn_refreshOrStop.Size = new System.Drawing.Size(35, 35);
+            this.btn_refreshOrStop.TabIndex = 87;
+            this.btn_refreshOrStop.TabStop = false;
+            this.btn_refreshOrStop.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_refreshOrStop.UseVisualStyleBackColor = false;
+            this.btn_refreshOrStop.Click += new System.EventHandler(this.btn_refreshOrStop_Click);
+            // 
             // btn_GoHome
             // 
             this.btn_GoHome.BackColor = System.Drawing.Color.Gray;
-            this.btn_GoHome.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_GoHome.BackgroundImage")));
+            this.btn_GoHome.BackgroundImage = global::infbez4.Properties.Resources.house;
             this.btn_GoHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_GoHome.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_GoHome.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
@@ -127,34 +229,6 @@
             this.btn_GoHome.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_GoHome.UseVisualStyleBackColor = false;
             this.btn_GoHome.Click += new System.EventHandler(this.btn_GoHome_Click);
-            // 
-            // btn_refreshOrStop
-            // 
-            this.btn_refreshOrStop.BackColor = System.Drawing.Color.Gray;
-            this.btn_refreshOrStop.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_refreshOrStop.BackgroundImage")));
-            this.btn_refreshOrStop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_refreshOrStop.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_refreshOrStop.FlatAppearance.BorderSize = 0;
-            this.btn_refreshOrStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_refreshOrStop.Location = new System.Drawing.Point(131, 1);
-            this.btn_refreshOrStop.Name = "btn_refreshOrStop";
-            this.btn_refreshOrStop.Size = new System.Drawing.Size(35, 35);
-            this.btn_refreshOrStop.TabIndex = 87;
-            this.btn_refreshOrStop.TabStop = false;
-            this.btn_refreshOrStop.UseVisualStyleBackColor = false;
-            this.btn_refreshOrStop.Click += new System.EventHandler(this.btn_refreshOrStop_Click);
-            // 
-            // label_user_login
-            // 
-            this.label_user_login.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label_user_login.BackColor = System.Drawing.Color.Transparent;
-            this.label_user_login.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_user_login.Location = new System.Drawing.Point(1012, 0);
-            this.label_user_login.Name = "label_user_login";
-            this.label_user_login.Size = new System.Drawing.Size(168, 36);
-            this.label_user_login.TabIndex = 88;
-            this.label_user_login.Text = "label1";
-            this.label_user_login.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // Form_browser
             // 
@@ -173,10 +247,12 @@
             this.HelpButton = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form_browser";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "BrowserApp";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_browser_FormClosed);
             this.Load += new System.EventHandler(this.Form_browser_Load);
+            this.contextMenu_user.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -190,5 +266,13 @@
         private System.Windows.Forms.Button btn_GoHome;
         private System.Windows.Forms.Button btn_refreshOrStop;
         private System.Windows.Forms.Label label_user_login;
+        private System.Windows.Forms.ContextMenuStrip contextMenu_user;
+        private System.Windows.Forms.ToolStripMenuItem dfgdfgToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dfgdfgToolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem dfgdfgToolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem dfgdfgToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem dfgdfgToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem dfgdfgToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem dfgToolStripMenuItem;
     }
 }
