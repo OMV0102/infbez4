@@ -160,5 +160,14 @@ namespace infbez4
         {
             this.urlnew = webBrowser1.StatusText;  //  ААААААААААААААААААААААААА
         }
+
+        // если кликаем по имени юзера 
+        private void label_user_login_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Left)
+            {
+                this.contextMenu_user.Show(label_user_login, e.Location, ToolStripDropDownDirection.BelowLeft);
+            }
+        }
     }
 }

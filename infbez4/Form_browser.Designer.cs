@@ -35,15 +35,9 @@
             this.btn_next = new System.Windows.Forms.Button();
             this.label_user_login = new System.Windows.Forms.Label();
             this.contextMenu_user = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.dfgdfgToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dfgdfgToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.dfgdfgToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.dfgToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dfgdfgToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.dfgdfgToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.dfgdfgToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_refreshOrStop = new System.Windows.Forms.Button();
             this.btn_GoHome = new System.Windows.Forms.Button();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenu_user.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -132,65 +126,16 @@
             this.label_user_login.TabIndex = 88;
             this.label_user_login.Text = "user_login";
             this.label_user_login.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label_user_login.MouseClick += new System.Windows.Forms.MouseEventHandler(this.label_user_login_MouseClick);
             // 
             // contextMenu_user
             // 
             this.contextMenu_user.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.contextMenu_user.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dfgdfgToolStripMenuItem,
-            this.dfgdfgToolStripMenuItem1});
+            this.toolStripMenuItem1});
+            this.contextMenu_user.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Table;
             this.contextMenu_user.Name = "contextMenu_user";
-            this.contextMenu_user.Size = new System.Drawing.Size(125, 52);
-            // 
-            // dfgdfgToolStripMenuItem
-            // 
-            this.dfgdfgToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dfgdfgToolStripMenuItem4,
-            this.dfgToolStripMenuItem});
-            this.dfgdfgToolStripMenuItem.Name = "dfgdfgToolStripMenuItem";
-            this.dfgdfgToolStripMenuItem.Size = new System.Drawing.Size(124, 24);
-            this.dfgdfgToolStripMenuItem.Text = "dfgd";
-            // 
-            // dfgdfgToolStripMenuItem4
-            // 
-            this.dfgdfgToolStripMenuItem4.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dfgdfgToolStripMenuItem5});
-            this.dfgdfgToolStripMenuItem4.Name = "dfgdfgToolStripMenuItem4";
-            this.dfgdfgToolStripMenuItem4.Size = new System.Drawing.Size(124, 24);
-            this.dfgdfgToolStripMenuItem4.Text = "dfgdfg";
-            // 
-            // dfgdfgToolStripMenuItem5
-            // 
-            this.dfgdfgToolStripMenuItem5.Name = "dfgdfgToolStripMenuItem5";
-            this.dfgdfgToolStripMenuItem5.Size = new System.Drawing.Size(124, 24);
-            this.dfgdfgToolStripMenuItem5.Text = "dfgdfg";
-            // 
-            // dfgToolStripMenuItem
-            // 
-            this.dfgToolStripMenuItem.Name = "dfgToolStripMenuItem";
-            this.dfgToolStripMenuItem.Size = new System.Drawing.Size(124, 24);
-            this.dfgToolStripMenuItem.Text = "dfg";
-            // 
-            // dfgdfgToolStripMenuItem1
-            // 
-            this.dfgdfgToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dfgdfgToolStripMenuItem2,
-            this.dfgdfgToolStripMenuItem3});
-            this.dfgdfgToolStripMenuItem1.Name = "dfgdfgToolStripMenuItem1";
-            this.dfgdfgToolStripMenuItem1.Size = new System.Drawing.Size(124, 24);
-            this.dfgdfgToolStripMenuItem1.Text = "dfgdfg";
-            // 
-            // dfgdfgToolStripMenuItem2
-            // 
-            this.dfgdfgToolStripMenuItem2.Name = "dfgdfgToolStripMenuItem2";
-            this.dfgdfgToolStripMenuItem2.Size = new System.Drawing.Size(124, 24);
-            this.dfgdfgToolStripMenuItem2.Text = "dfgdfg";
-            // 
-            // dfgdfgToolStripMenuItem3
-            // 
-            this.dfgdfgToolStripMenuItem3.Name = "dfgdfgToolStripMenuItem3";
-            this.dfgdfgToolStripMenuItem3.Size = new System.Drawing.Size(124, 24);
-            this.dfgdfgToolStripMenuItem3.Text = "dfgdfg";
+            this.contextMenu_user.Size = new System.Drawing.Size(219, 50);
             // 
             // btn_refreshOrStop
             // 
@@ -230,6 +175,12 @@
             this.btn_GoHome.UseVisualStyleBackColor = false;
             this.btn_GoHome.Click += new System.EventHandler(this.btn_GoHome_Click);
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(218, 24);
+            this.toolStripMenuItem1.Text = "toolStripMenuItem1";
+            // 
             // Form_browser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -267,12 +218,6 @@
         private System.Windows.Forms.Button btn_refreshOrStop;
         private System.Windows.Forms.Label label_user_login;
         private System.Windows.Forms.ContextMenuStrip contextMenu_user;
-        private System.Windows.Forms.ToolStripMenuItem dfgdfgToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dfgdfgToolStripMenuItem4;
-        private System.Windows.Forms.ToolStripMenuItem dfgdfgToolStripMenuItem5;
-        private System.Windows.Forms.ToolStripMenuItem dfgdfgToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem dfgdfgToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem dfgdfgToolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem dfgToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }
