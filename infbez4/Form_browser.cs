@@ -26,7 +26,6 @@ namespace infbez4
             webBrowser1.DocumentTitleChanged += new EventHandler(webBrowser1_DocumentTitleChanged);
             webBrowser1.StatusTextChanged += new EventHandler(webBrowser1_StatusTextChanged);
 
-            webBrowser1.Navigate(global.searchDefault);
         }
 
         private Guid user_id;
@@ -45,7 +44,7 @@ namespace infbez4
         private void Form_browser_Load(object sender, EventArgs e)
         {
             this.label_user_login.Text = this.user_login;
-            //webBrowser1.Navigate("yandex.ru");
+            btn_GoHome.PerformClick();
         }
 
         // кнопка НАЗАД
