@@ -35,6 +35,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.checkBox_showPassword = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label_status = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txt_login
@@ -48,6 +50,7 @@
             this.txt_login.TabIndex = 0;
             this.txt_login.TabStop = false;
             this.txt_login.Text = "orlov";
+            this.txt_login.TextChanged += new System.EventHandler(this.txt_login_TextChanged);
             // 
             // btn_entry
             // 
@@ -60,7 +63,7 @@
             this.btn_entry.TabStop = false;
             this.btn_entry.Text = "Вход";
             this.btn_entry.UseVisualStyleBackColor = true;
-            this.btn_entry.Click += new System.EventHandler(this.button1_Click);
+            this.btn_entry.Click += new System.EventHandler(this.btn_entry_Click);
             // 
             // txt_password
             // 
@@ -73,6 +76,7 @@
             this.txt_password.TabIndex = 2;
             this.txt_password.TabStop = false;
             this.txt_password.Text = "orlov";
+            this.txt_password.TextChanged += new System.EventHandler(this.txt_password_TextChanged);
             // 
             // label1
             // 
@@ -117,12 +121,35 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Авторизация";
             // 
+            // button1
+            // 
+            this.button1.Enabled = false;
+            this.button1.Location = new System.Drawing.Point(450, 210);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label_status
+            // 
+            this.label_status.AutoSize = true;
+            this.label_status.ForeColor = System.Drawing.Color.Red;
+            this.label_status.Location = new System.Drawing.Point(118, 242);
+            this.label_status.Name = "label_status";
+            this.label_status.Size = new System.Drawing.Size(294, 20);
+            this.label_status.TabIndex = 8;
+            this.label_status.Text = "Указаны неверные логин или пароль!";
+            // 
             // Form_log_in
             // 
             this.AcceptButton = this.btn_entry;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(576, 281);
+            this.Controls.Add(this.label_status);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.checkBox_showPassword);
             this.Controls.Add(this.label1);
@@ -152,5 +179,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox checkBox_showPassword;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label_status;
     }
 }

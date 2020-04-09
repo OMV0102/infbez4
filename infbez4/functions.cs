@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
+using Npgsql;
 
 namespace infbez4
 {
@@ -23,6 +25,11 @@ namespace infbez4
         public static string ByteArrayToStringHEX(byte[] byteArr)
         {
             return BitConverter.ToString(byteArr).Replace("-", "").ToUpper();
+        }
+
+        public static string getHash(string str)
+        {
+            return functions.ByteArrayToStringHEX(SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(str))).ToLower();
         }
     }
 }

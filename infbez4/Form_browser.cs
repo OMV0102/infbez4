@@ -12,24 +12,29 @@ namespace infbez4
 {
     public partial class Form_browser : Form
     {
-        public Form_browser(string login, string role)
+        public Form_browser(Guid id, string login, string role)
         {
             InitializeComponent();
+            user_id = id;
             this.user_login = login;
             this.user_role = role;
         }
 
-        public string user_login;
-        public string user_role;
+        private Guid user_id;
+        private string user_login;
+        private string user_role;
+        private bool web_navigatingORcomplete = false;
 
+        // при ЗАКРЫТИИ формы
         private void Form_browser_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            Application.Exit(); // выход из приложения
         }
 
         // при загрузке формы
         private void Form_browser_Load(object sender, EventArgs e)
         {
+            this.label_user_login.Text = this.user_login;
             webBrowser1.Navigate(txt_url.Text);
         }
 
@@ -37,7 +42,6 @@ namespace infbez4
         private void btn_prev_Click(object sender, EventArgs e)
         {
             webBrowser1.GoBack();
-            
             txt_url.Text = webBrowser1.Url.ToString();
         }
 
@@ -56,7 +60,6 @@ namespace infbez4
                 if(e.KeyChar == 13)
                 {
                     webBrowser1.Navigate(txt_url.Text, false);
-                    txt_url.Text = webBrowser1.Url.ToString();
                 }
             }
         }
@@ -68,9 +71,10 @@ namespace infbez4
             txt_url.Text = webBrowser1.Url.ToString();
         }
 
-        // кнопка ОБНОВИТЬ
-        private void btn_refresh_Click(object sender, EventArgs e)
+        // кнопка ОБНОВИТЬ или СТОП загрузка
+        private void btn_refreshOrStop_Click(object sender, EventArgs e)
         {
+            if(this.web_navigatingORcomplete == true)
             webBrowser1.Refresh();
         }
     }
