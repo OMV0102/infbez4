@@ -35,9 +35,11 @@
             this.btn_next = new System.Windows.Forms.Button();
             this.label_user_login = new System.Windows.Forms.Label();
             this.contextMenu_user = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.MenuItem_editProfile = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.MenuItem_showHistory = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_refreshOrStop = new System.Windows.Forms.Button();
             this.btn_GoHome = new System.Windows.Forms.Button();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenu_user.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -119,10 +121,11 @@
             this.label_user_login.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label_user_login.BackColor = System.Drawing.Color.Transparent;
             this.label_user_login.ContextMenuStrip = this.contextMenu_user;
+            this.label_user_login.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label_user_login.Font = new System.Drawing.Font("Tahoma", 15F);
-            this.label_user_login.Location = new System.Drawing.Point(1034, 0);
+            this.label_user_login.Location = new System.Drawing.Point(1052, 2);
             this.label_user_login.Name = "label_user_login";
-            this.label_user_login.Size = new System.Drawing.Size(146, 36);
+            this.label_user_login.Size = new System.Drawing.Size(126, 38);
             this.label_user_login.TabIndex = 88;
             this.label_user_login.Text = "user_login";
             this.label_user_login.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -130,12 +133,42 @@
             // 
             // contextMenu_user
             // 
+            this.contextMenu_user.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.contextMenu_user.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.contextMenu_user.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
+            this.MenuItem_editProfile,
+            this.toolStripSeparator1,
+            this.MenuItem_showHistory});
             this.contextMenu_user.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Table;
             this.contextMenu_user.Name = "contextMenu_user";
-            this.contextMenu_user.Size = new System.Drawing.Size(219, 50);
+            this.contextMenu_user.Size = new System.Drawing.Size(258, 80);
+            // 
+            // MenuItem_editProfile
+            // 
+            this.MenuItem_editProfile.AutoToolTip = true;
+            this.MenuItem_editProfile.Image = global::infbez4.Properties.Resources.human;
+            this.MenuItem_editProfile.Name = "MenuItem_editProfile";
+            this.MenuItem_editProfile.ShortcutKeyDisplayString = "";
+            this.MenuItem_editProfile.Size = new System.Drawing.Size(257, 24);
+            this.MenuItem_editProfile.Text = "Радактировать профиль";
+            this.MenuItem_editProfile.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
+            this.MenuItem_editProfile.ToolTipText = "Радактирование логина и смена пароля";
+            this.MenuItem_editProfile.Click += new System.EventHandler(this.MenuItem_editProfile_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(254, 6);
+            // 
+            // MenuItem_showHistory
+            // 
+            this.MenuItem_showHistory.AutoToolTip = true;
+            this.MenuItem_showHistory.Image = global::infbez4.Properties.Resources.history;
+            this.MenuItem_showHistory.Name = "MenuItem_showHistory";
+            this.MenuItem_showHistory.Size = new System.Drawing.Size(257, 24);
+            this.MenuItem_showHistory.Text = "Просмотр истории";
+            this.MenuItem_showHistory.ToolTipText = "Просмотр посещенных веб страниц за все время";
+            this.MenuItem_showHistory.Click += new System.EventHandler(this.MenuItem_showHistory_Click);
             // 
             // btn_refreshOrStop
             // 
@@ -175,25 +208,19 @@
             this.btn_GoHome.UseVisualStyleBackColor = false;
             this.btn_GoHome.Click += new System.EventHandler(this.btn_GoHome_Click);
             // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(218, 24);
-            this.toolStripMenuItem1.Text = "toolStripMenuItem1";
-            // 
             // Form_browser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(1180, 538);
-            this.Controls.Add(this.btn_refreshOrStop);
             this.Controls.Add(this.webBrowser1);
+            this.Controls.Add(this.label_user_login);
+            this.Controls.Add(this.btn_refreshOrStop);
             this.Controls.Add(this.txt_url);
             this.Controls.Add(this.btn_next);
             this.Controls.Add(this.btn_prev);
             this.Controls.Add(this.btn_GoHome);
-            this.Controls.Add(this.label_user_login);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.HelpButton = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -218,6 +245,8 @@
         private System.Windows.Forms.Button btn_refreshOrStop;
         private System.Windows.Forms.Label label_user_login;
         private System.Windows.Forms.ContextMenuStrip contextMenu_user;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem MenuItem_editProfile;
+        private System.Windows.Forms.ToolStripMenuItem MenuItem_showHistory;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }

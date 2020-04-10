@@ -43,8 +43,9 @@ namespace infbez4
         // при загрузке формы
         private void Form_browser_Load(object sender, EventArgs e)
         {
-            this.label_user_login.Text = this.user_login;
-            btn_GoHome.PerformClick();
+            this.label_user_login.Text = this.user_login; // вывели логин вверху справа
+            this.contextMenu_user.Cursor = Cursors.Hand; // курсор у меню = рука
+            btn_GoHome.PerformClick(); // переход к домашней странице
         }
 
         // кнопка НАЗАД
@@ -66,14 +67,7 @@ namespace infbez4
             {
                 if(e.KeyChar == 13)
                 {
-                    try
-                    {
-                        webBrowser1.Navigate(txt_url.Text, false);
-                    }
-                    catch(Exception error)
-                    {
-
-                    }
+                    webBrowser1.Navigate(txt_url.Text);
                 }
             }
         }
@@ -122,10 +116,8 @@ namespace infbez4
         // если происходит попытка открыть ссылку в новом окне
         private void webBrowser1_NewWindow(object sender, CancelEventArgs e)
         {
-            //webBrowser1.Navigate(webBrowser1.Url);
-            //webBrowser1.
-            e.Cancel = true;
-            webBrowser1.Navigate(this.urlnew);
+            e.Cancel = true; // отмена события
+            webBrowser1.Navigate(this.urlnew); // открытие этого же ссылки без нового окна
         }
 
         // Происходит, когда элемент управления WebBrowser переходит
@@ -155,19 +147,32 @@ namespace infbez4
             this.Text = webBrowser1.DocumentTitle;
         }
 
-        // Updates the status bar with the current browser status text.
+        // Если наводим мышь на ссылку то значение статуса ==  адрес ссылки
+        // запоминаем адресс новой ссылки чтоб потом при открытии ее в новом окне, открыть просто
         private void webBrowser1_StatusTextChanged(object sender, EventArgs e)
         {
-            this.urlnew = webBrowser1.StatusText;  //  ААААААААААААААААААААААААА
+            this.urlnew = webBrowser1.StatusText;
         }
 
-        // если кликаем по имени юзера 
+        // если кликаем по имени юзера для выпадения контекстного меню
         private void label_user_login_MouseClick(object sender, MouseEventArgs e)
         {
             if(e.Button == MouseButtons.Left)
             {
                 this.contextMenu_user.Show(label_user_login, e.Location, ToolStripDropDownDirection.BelowLeft);
             }
+        }
+
+        // кнопка РЕДАКТИРОВАНИЕ ПРОФИЛЯ
+        private void MenuItem_editProfile_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // кнопка ПРОСМОТР ИСТОРИИ
+        private void MenuItem_showHistory_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
