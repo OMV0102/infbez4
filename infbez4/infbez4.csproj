@@ -142,6 +142,12 @@
     <Compile Include="Form_browser.Designer.cs">
       <DependentUpon>Form_browser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_captha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_captha.Designer.cs">
+      <DependentUpon>Form_captha.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_log_in.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +160,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form_browser.resx">
       <DependentUpon>Form_browser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_captha.resx">
+      <DependentUpon>Form_captha.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_log_in.resx">
       <DependentUpon>Form_log_in.cs</DependentUpon>
