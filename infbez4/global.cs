@@ -14,7 +14,7 @@ namespace infbez4
         public static int loginCount;
         public static int loginMaxCount;
         public static bool canLogin;
-        public static bool captchaComplete;
+        //public static bool captchaComplete;
         //public static string searchDefault = "google.com";
         public static string searchDefault = "yandex.ru";
     }

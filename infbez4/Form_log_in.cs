@@ -64,29 +64,33 @@ namespace infbez4
                 password_table = sqlReader.GetString(2).ToLower();
                 user_role = sqlReader.GetString(3).ToLower();
                 global.canLogin = sqlReader.GetBoolean(4);
+                conn.Close();
                 string password_form = functions.getHash(txt_password.Text);
-                global.loginCount++;
 
-                global.captchaComplete = true;
-                if(global.canLogin == false)
+                if(global.canLogin == false) // если у пользователя стоит флаг вводить капчу
                 {
-                    global.captchaComplete = false;
-                    MessageBox.Show(this, "Превышено максимальное число попыток ввода данных! Введите капчу, чтобы войти...", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                    MessageBox.Show("Превышено максимальное число попыток ввода данных! Введите капчу, чтобы войти...", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
                     Form_captha form = new Form_captha();
                     form.ShowDialog(this);
                 }
-
                 bool passwordComplete = false;
-                if(password_table == password_form)
+                if(global.canLogin == true)
                 {
-                    Form_browser form = new Form_browser(user_id, user_login, user_role);
-                    form.Show(this);
-                    this.Hide();
-                    passwordComplete = true;
-                }
-                else
-                {
-                    this.label_status.Visible = true;
+                    this.nextLoginWitnCaptcha(global.canLogin); // Устанавливаем в БД вход без капчи
+
+                    global.loginCount++;
+                    if(password_table == password_form)
+                    {
+                        Form_browser form = new Form_browser(user_id, user_login, user_role);
+                        form.Show(this);
+                        this.Hide();
+                        passwordComplete = true;
+                    }
+                    else
+                    {
+                        passwordComplete = false;
+                        this.label_status.Visible = true;
+                    }
                 }
 
                 // если loginMaxCount и больше раз ввели неправильно то в БД заносим 
@@ -98,7 +102,6 @@ namespace infbez4
                 
                 this.btn_entry.Enabled = true;
                 this.Cursor = Cursors.Arrow;
-                conn.Close();
             }
             catch (Exception error)
             {

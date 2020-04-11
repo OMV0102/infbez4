@@ -16,7 +16,7 @@ namespace infbez4
         {
             InitializeComponent();
             user_id = id;
-            this.user_login = login;
+            Form_browser.user_login = login;
             this.user_role = role;
 
             // Этих события не отображаются в конструкторе,
@@ -29,7 +29,7 @@ namespace infbez4
         }
 
         private Guid user_id;
-        private string user_login;
+        static public string user_login;
         private string user_role;
         private bool web_navigatingORcomplete = false;
         private string urlnew = "";
@@ -159,14 +159,23 @@ namespace infbez4
         {
             if(e.Button == MouseButtons.Left)
             {
+                // если лкм то открыть
                 this.contextMenu_user.Show(label_user_login, e.Location, ToolStripDropDownDirection.BelowLeft);
+            }
+            else
+            {
+                // если пкм и другие то закрыть и не показывать
+                this.contextMenu_user.Close();
             }
         }
 
         // кнопка РЕДАКТИРОВАНИЕ ПРОФИЛЯ
         private void MenuItem_editProfile_Click(object sender, EventArgs e)
         {
+            Form_editProfile form = new Form_editProfile(user_id);
+            form.ShowDialog(this);
 
+            label_user_login.Text = user_login;
         }
 
         // кнопка ПРОСМОТР ИСТОРИИ

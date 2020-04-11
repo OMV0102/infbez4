@@ -46,6 +46,7 @@
             // 
             // txt_words
             // 
+            this.txt_words.BackColor = System.Drawing.Color.White;
             this.txt_words.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txt_words.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txt_words.Location = new System.Drawing.Point(13, 178);
@@ -55,6 +56,7 @@
             this.txt_words.TabIndex = 1;
             this.txt_words.TabStop = false;
             this.txt_words.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_words.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_words_KeyPress);
             // 
             // btn_refresh
             // 
@@ -98,10 +100,9 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form_captha";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Captha";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_captha_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_captha_FormClosed);
             this.Load += new System.EventHandler(this.Form_captha_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

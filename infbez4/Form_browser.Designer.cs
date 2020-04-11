@@ -70,10 +70,10 @@
             this.txt_url.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_url.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txt_url.ForeColor = System.Drawing.Color.White;
-            this.txt_url.Location = new System.Drawing.Point(209, 3);
+            this.txt_url.Location = new System.Drawing.Point(174, 5);
             this.txt_url.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_url.Name = "txt_url";
-            this.txt_url.Size = new System.Drawing.Size(796, 30);
+            this.txt_url.Size = new System.Drawing.Size(847, 30);
             this.txt_url.TabIndex = 1;
             this.txt_url.TabStop = false;
             this.txt_url.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_url_KeyPress);
@@ -123,9 +123,9 @@
             this.label_user_login.ContextMenuStrip = this.contextMenu_user;
             this.label_user_login.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label_user_login.Font = new System.Drawing.Font("Tahoma", 15F);
-            this.label_user_login.Location = new System.Drawing.Point(1052, 2);
+            this.label_user_login.Location = new System.Drawing.Point(1028, 2);
             this.label_user_login.Name = "label_user_login";
-            this.label_user_login.Size = new System.Drawing.Size(126, 38);
+            this.label_user_login.Size = new System.Drawing.Size(150, 38);
             this.label_user_login.TabIndex = 88;
             this.label_user_login.Text = "user_login";
             this.label_user_login.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -141,7 +141,7 @@
             this.MenuItem_showHistory});
             this.contextMenu_user.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Table;
             this.contextMenu_user.Name = "contextMenu_user";
-            this.contextMenu_user.Size = new System.Drawing.Size(258, 80);
+            this.contextMenu_user.Size = new System.Drawing.Size(258, 58);
             // 
             // MenuItem_editProfile
             // 

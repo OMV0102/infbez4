@@ -21,6 +21,7 @@ namespace infbez4
         private string WordsFontName = "Arial";
         private Int32 WordsSize = 53;
         private string text_generate = "";
+        private bool isBtnOKClick = false;
 
         // создание самой капчи
         private Bitmap CreateCaptcha(int Width, int Height)
@@ -131,30 +132,46 @@ namespace infbez4
         // кнопка ОК
         private void btn_ok_Click(object sender, EventArgs e)
         {
+            this.isBtnOKClick = true;
             if(txt_words.Text.ToLower() == this.text_generate.ToLower())
-                MessageBox.Show("Верно!");
+            {
+                txt_words.BackColor = Color.White;
+                global.canLogin = true;
+                this.Close();
+            }
             else
-                MessageBox.Show("АААААШИБКА", "АХАХАХАХАХАХХАХ");
-            btn_refresh.PerformClick();
+            {
+                global.canLogin = false;
+                txt_words.BackColor = Color.Red;
+                this.btn_refresh.PerformClick();
+            }
             
         }
 
         // ПЕРЕД закрытием формы
         private void Form_captha_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult res = MessageBox.Show("Выйти из приложения?\n");
-            if(res == DialogResult.No)
+            if(this.isBtnOKClick == false)
             {
-                e.Cancel = true;
+                DialogResult res = MessageBox.Show("Выйти из приложения?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                if(res == DialogResult.No)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+                else
+                {
+                    this.isBtnOKClick = true;
+                    Application.Exit();
+                }
             }
-
+            
         }
 
-        // ПОСЛЕ закрытия капчи закрыть приложение
-        private void Form_captha_FormClosed(object sender, FormClosedEventArgs e)
+        // Если тыкаем кнопками на текст то менчем на белый фон нейтральный
+        private void txt_words_KeyPress(object sender, KeyPressEventArgs e)
         {
-
-            Application.Exit();
+            this.txt_words.BackColor = Color.White;
         }
     }
 }
