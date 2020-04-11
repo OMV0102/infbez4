@@ -169,8 +169,8 @@ namespace infbez4
 
                 NpgsqlCommand n = new NpgsqlCommand("INSERT INTO pmib6602.users (id, login, password, role) VALUES (pmib6602.get_uuid(),  @login, @password, @role);", conn);
 
-                n.Parameters.AddWithValue("login", "user"); // логин
-                n.Parameters.AddWithValue("password", functions.getHash("user")); // пароль
+                n.Parameters.AddWithValue("login", "orlov"); // логин
+                n.Parameters.AddWithValue("password", functions.getHash("orlov")); // пароль
                 n.Parameters.AddWithValue("role", "user premium"); // роль
 
                 var sqlReader = n.ExecuteNonQuery();
