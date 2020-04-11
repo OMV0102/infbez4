@@ -19,11 +19,19 @@ namespace infbez4
             InitializeComponent();
         }
 
+        private Guid user_id = Guid.Empty;
+        private string user_login = string.Empty;
+        private string password_table = string.Empty;
+        private string user_role = string.Empty;
+
         // При загрузке приложения
         private void Form_log_in_Load(object sender, EventArgs e)
         {
             checkBox_showPassword.Checked = true; // пароль скрыт по умолчанию
             this.label_status.Visible = false;
+            global.canLogin = true;
+            global.loginCount = 0;
+            global.loginMaxCount = 3;
         }
 
         // кнопка ВХОД
@@ -37,7 +45,7 @@ namespace infbez4
                 NpgsqlConnection conn = new NpgsqlConnection(global.connectionString);
                 conn.Open();
 
-                NpgsqlCommand n = new NpgsqlCommand("SELECT id, TRIM(login), TRIM(password), TRIM(role) FROM pmib6602.users WHERE TRIM(login) = TRIM(@login);", conn);
+                NpgsqlCommand n = new NpgsqlCommand("SELECT id, TRIM(login), TRIM(password), TRIM(role), canlogin FROM pmib6602.users WHERE TRIM(login) = TRIM(@login);", conn);
 
                 n.Parameters.AddWithValue("login", txt_login.Text);
 
@@ -52,27 +60,49 @@ namespace infbez4
                     return;
                 }
                 Guid user_id = sqlReader.GetGuid(0);
-                string user_login = sqlReader.GetString(1).ToLower();
-                string password_table = sqlReader.GetString(2).ToLower();
-                string user_role = sqlReader.GetString(3).ToLower();
+                user_login = sqlReader.GetString(1).ToLower();
+                password_table = sqlReader.GetString(2).ToLower();
+                user_role = sqlReader.GetString(3).ToLower();
+                global.canLogin = sqlReader.GetBoolean(4);
                 string password_form = functions.getHash(txt_password.Text);
+                global.loginCount++;
+
+                global.captchaComplete = true;
+                if(global.canLogin == false)
+                {
+                    global.captchaComplete = false;
+                    MessageBox.Show(this, "Превышено максимальное число попыток ввода данных! Введите капчу, чтобы войти...", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                    Form_captha form = new Form_captha();
+                    form.ShowDialog(this);
+                }
+
+                bool passwordComplete = false;
                 if(password_table == password_form)
                 {
                     Form_browser form = new Form_browser(user_id, user_login, user_role);
                     form.Show(this);
                     this.Hide();
+                    passwordComplete = true;
                 }
                 else
                 {
                     this.label_status.Visible = true;
                 }
+
+                // если loginMaxCount и больше раз ввели неправильно то в БД заносим 
+                if(global.loginCount >= global.loginMaxCount && passwordComplete == false)
+                {
+                    global.canLogin = false;
+                    this.nextLoginWitnCaptcha(global.canLogin); // Устанавливаем в БД следующий вход с капчей
+                }
+                
                 this.btn_entry.Enabled = true;
                 this.Cursor = Cursors.Arrow;
                 conn.Close();
             }
             catch (Exception error)
             {
-                MessageBox.Show(error.Message);
+                //MessageBox.Show(error.Message);
             }
         }
 
@@ -91,6 +121,26 @@ namespace infbez4
             }
         }
 
+        // функции запрета входа без капчи
+        private void nextLoginWitnCaptcha(bool canlogin)
+        {
+            try
+            {
+                NpgsqlConnection conn = new NpgsqlConnection(global.connectionString);
+                conn.Open();
+
+                NpgsqlCommand n = new NpgsqlCommand("UPDATE pmib6602.users SET canlogin = @canlogin WHERE TRIM(login) = TRIM(@login);", conn);
+
+                n.Parameters.AddWithValue("canlogin", canlogin);
+                n.Parameters.AddWithValue("login", user_login);
+
+                int stringcount = n.ExecuteNonQuery();
+            }
+            catch(Exception error)
+            {
+
+            }
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
