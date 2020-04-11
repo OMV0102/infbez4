@@ -11,10 +11,13 @@ namespace infbez4
     public static class global
     {
         public static string connectionString = "Host=students.ami.nstu.ru;Port=5432;Database=students;User Id=pmi-b6602;Password=ekNonuc1;";
+        //==============================
         public static int loginCount;
         public static int loginMaxCount;
         public static bool canLogin;
-        //public static bool captchaComplete;
+        //===============================
+        public static int loginMaxLength = 20;
+        //===============================
         //public static string searchDefault = "google.com";
         public static string searchDefault = "yandex.ru";
     }

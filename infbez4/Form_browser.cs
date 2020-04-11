@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Npgsql;
+using System.Security.Cryptography;
 
 namespace infbez4
 {
@@ -16,8 +18,8 @@ namespace infbez4
         {
             InitializeComponent();
             user_id = id;
-            Form_browser.user_login = login;
-            this.user_role = role;
+            user_login = login;
+            user_role = role;
 
             // Этих события не отображаются в конструкторе,
             // поэтому вручную должны связать их с их обработчиками событий в коде.
@@ -29,7 +31,7 @@ namespace infbez4
         }
 
         private Guid user_id;
-        static public string user_login;
+        private string user_login;
         private string user_role;
         private bool web_navigatingORcomplete = false;
         private string urlnew = "";
@@ -43,7 +45,7 @@ namespace infbez4
         // при загрузке формы
         private void Form_browser_Load(object sender, EventArgs e)
         {
-            this.label_user_login.Text = this.user_login; // вывели логин вверху справа
+            this.label_user_login.Text = user_login; // вывели логин вверху справа
             this.contextMenu_user.Cursor = Cursors.Hand; // курсор у меню = рука
             btn_GoHome.PerformClick(); // переход к домашней странице
         }
@@ -175,6 +177,35 @@ namespace infbez4
             Form_editProfile form = new Form_editProfile(user_id);
             form.ShowDialog(this);
 
+            /*try
+            {
+                NpgsqlConnection conn = new NpgsqlConnection(global.connectionString);
+                conn.Open();
+
+                NpgsqlCommand n = new NpgsqlCommand("SELECT id, TRIM(login), TRIM(password), TRIM(role), canlogin FROM pmib6602.users WHERE TRIM(login) = TRIM(@login);", conn);
+
+                n.Parameters.AddWithValue("login", user_login);
+
+                var sqlReader = n.ExecuteReader();
+
+                if(sqlReader.Read() == false) // если введенный логин не найден
+                {
+                    conn.Close();
+                    return;
+                }
+                Guid user_id = sqlReader.GetGuid(0);
+                user_login = sqlReader.GetString(1).ToLower();
+                password_table = sqlReader.GetString(2).ToLower();
+                user_role = sqlReader.GetString(3).ToLower();
+                global.canLogin = sqlReader.GetBoolean(4);
+                conn.Close();
+            }
+            catch(Exception error)
+            {
+                //MessageBox.Show(error.Message);
+            }*/
+
+            user_login = form.user_login;
             label_user_login.Text = user_login;
         }
 

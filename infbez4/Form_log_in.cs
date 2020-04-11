@@ -40,8 +40,8 @@ namespace infbez4
             this.btn_entry.Enabled = false;
             this.Cursor = Cursors.AppStarting;
 
-            try 
-            { 
+            try
+            {
                 NpgsqlConnection conn = new NpgsqlConnection(global.connectionString);
                 conn.Open();
 
@@ -65,48 +65,49 @@ namespace infbez4
                 user_role = sqlReader.GetString(3).ToLower();
                 global.canLogin = sqlReader.GetBoolean(4);
                 conn.Close();
-                string password_form = functions.getHash(txt_password.Text);
-
-                if(global.canLogin == false) // если у пользователя стоит флаг вводить капчу
-                {
-                    MessageBox.Show("Превышено максимальное число попыток ввода данных! Введите капчу, чтобы войти...", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
-                    Form_captha form = new Form_captha();
-                    form.ShowDialog(this);
-                }
-                bool passwordComplete = false;
-                if(global.canLogin == true)
-                {
-                    this.nextLoginWitnCaptcha(global.canLogin); // Устанавливаем в БД вход без капчи
-
-                    global.loginCount++;
-                    if(password_table == password_form)
-                    {
-                        Form_browser form = new Form_browser(user_id, user_login, user_role);
-                        form.Show(this);
-                        this.Hide();
-                        passwordComplete = true;
-                    }
-                    else
-                    {
-                        passwordComplete = false;
-                        this.label_status.Visible = true;
-                    }
-                }
-
-                // если loginMaxCount и больше раз ввели неправильно то в БД заносим 
-                if(global.loginCount >= global.loginMaxCount && passwordComplete == false)
-                {
-                    global.canLogin = false;
-                    this.nextLoginWitnCaptcha(global.canLogin); // Устанавливаем в БД следующий вход с капчей
-                }
-                
-                this.btn_entry.Enabled = true;
-                this.Cursor = Cursors.Arrow;
             }
-            catch (Exception error)
+            catch(Exception error)
             {
                 //MessageBox.Show(error.Message);
             }
+
+            string password_form = functions.getHash(txt_password.Text);
+
+            if(global.canLogin == false) // если у пользователя стоит флаг вводить капчу
+            {
+                MessageBox.Show("Превышено максимальное число попыток ввода данных! Введите капчу, чтобы войти...", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                Form_captha form = new Form_captha();
+                form.ShowDialog(this);
+            }
+            bool passwordComplete = false;
+            if(global.canLogin == true)
+            {
+                this.nextLoginWitnCaptcha(global.canLogin); // Устанавливаем в БД вход без капчи
+
+                global.loginCount++;
+                if(password_table == password_form)
+                {
+                    Form_browser form = new Form_browser(user_id, user_login, user_role);
+                    form.Show(this);
+                    this.Hide();
+                    passwordComplete = true;
+                }
+                else
+                {
+                    passwordComplete = false;
+                    this.label_status.Visible = true;
+                }
+            }
+
+            // если loginMaxCount и больше раз ввели неправильно то в БД заносим 
+            if(global.loginCount >= global.loginMaxCount && passwordComplete == false)
+            {
+                global.canLogin = false;
+                this.nextLoginWitnCaptcha(global.canLogin); // Устанавливаем в БД следующий вход с капчей
+            }
+                
+            this.btn_entry.Enabled = true;
+            this.Cursor = Cursors.Arrow;
         }
 
         // Пароль показать
@@ -145,27 +146,6 @@ namespace infbez4
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                NpgsqlConnection conn = new NpgsqlConnection(global.connectionString);
-                conn.Open();
-
-                NpgsqlCommand n = new NpgsqlCommand("INSERT INTO pmib6602.users (id, login, password, role) VALUES (pmib6602.get_uuid(),  @login, @password, @role);", conn);
-
-                n.Parameters.AddWithValue("login", "admin");
-                n.Parameters.AddWithValue("password", functions.getHash("admin"));
-                n.Parameters.AddWithValue("role", "admin");
-
-                var sqlReader = n.ExecuteNonQuery();
-            }
-            catch(Exception error)
-            {
-                MessageBox.Show(error.Message);
-            }
-        }
-
         // Если меняем логин
         private void txt_login_TextChanged(object sender, EventArgs e)
         {
@@ -176,6 +156,28 @@ namespace infbez4
         private void txt_password_TextChanged(object sender, EventArgs e)
         {
             this.label_status.Visible = false;
+        }
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                NpgsqlConnection conn = new NpgsqlConnection(global.connectionString);
+                conn.Open();
+
+                NpgsqlCommand n = new NpgsqlCommand("INSERT INTO pmib6602.users (id, login, password, role) VALUES (pmib6602.get_uuid(),  @login, @password, @role);", conn);
+
+                n.Parameters.AddWithValue("login", "orlov");
+                n.Parameters.AddWithValue("password", functions.getHash("orlov"));
+                n.Parameters.AddWithValue("role", "user premium");
+
+                var sqlReader = n.ExecuteNonQuery();
+            }
+            catch(Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
         }
     }
 }
