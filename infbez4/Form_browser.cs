@@ -51,28 +51,38 @@ namespace infbez4
 
             // получения адреса поисковика по умолчанию у пользователя
             user_search = global.searchDefault; // по умолчанию глобальный
-            NpgsqlConnection conn = new NpgsqlConnection(global.connectionString);
-            try
+
+            if(user_role == global.role_name_limited)  // если роль обычная
             {
-                conn.Open();
-
-                NpgsqlCommand query = new NpgsqlCommand("SELECT link FROM pmib6602.search_default WHERE id = @id::uuid;", conn);
-
-                query.Parameters.AddWithValue("id", user_id);
-
-                var sqlReader = query.ExecuteReader();
-
-                if(sqlReader.Read() == true) // если введенный логин не найден
+                // ничего не загружаем
+                this.toolStripSeparator2.Visible = false;
+                this.MenuItem_changeSearch.Visible = false;
+            }
+            else
+            {
+                NpgsqlConnection conn = new NpgsqlConnection(global.connectionString);
+                try
                 {
-                    user_search = sqlReader.GetString(0);
+                    conn.Open();
+
+                    NpgsqlCommand query = new NpgsqlCommand("SELECT link FROM pmib6602.search_default WHERE id = @id::uuid;", conn);
+
+                    query.Parameters.AddWithValue("id", user_id);
+
+                    var sqlReader = query.ExecuteReader();
+
+                    if(sqlReader.Read() == true) // если введенный логин не найден
+                    {
+                        user_search = sqlReader.GetString(0);
+                    }
+
                 }
-                
+                catch(Exception error)
+                {
+                    MessageBox.Show(error.Message);
+                }
+                conn.Close();
             }
-            catch (Exception error)
-            {
-                MessageBox.Show(error.Message);
-            }
-            conn.Close();
 
             btn_GoHome.PerformClick(); // переход к домашней странице
         }

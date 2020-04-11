@@ -19,5 +19,7 @@ namespace infbez4
         public static int loginMaxLength = 20;
         //===============================
         public static string searchDefault = "google.ru";
+        //===============================
+        public static string role_name_limited = "user";
     }
 }
