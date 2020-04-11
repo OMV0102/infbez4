@@ -23,7 +23,7 @@ namespace infbez4
 
         public Guid user_id;
         public string user_login;
-        public string user_role;
+        private string user_role;
 
         // При загрузке формы
         private void Form_editProfile_Load(object sender, EventArgs e)

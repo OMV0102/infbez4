@@ -154,6 +154,18 @@
     <Compile Include="Form_editProfile.Designer.cs">
       <DependentUpon>Form_editProfile.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_editSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_editSearch.Designer.cs">
+      <DependentUpon>Form_editSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_historyShow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_historyShow.Designer.cs">
+      <DependentUpon>Form_historyShow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_log_in.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +184,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_editProfile.resx">
       <DependentUpon>Form_editProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_editSearch.resx">
+      <DependentUpon>Form_editSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_historyShow.resx">
+      <DependentUpon>Form_historyShow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_log_in.resx">
       <DependentUpon>Form_log_in.cs</DependentUpon>

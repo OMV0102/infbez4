@@ -35,7 +35,6 @@ namespace infbez4
         private string user_role;
         private bool web_navigatingORcomplete = false;
         private string urlnew = "";
-        //private string user_search = "yandex.ru";
         private string user_search;
 
         // при ЗАКРЫТИИ формы
@@ -217,7 +216,10 @@ namespace infbez4
         // кнопка СМЕНИТЬ ПОИСКОВИК
         private void MenuItem_changeSearch_Click(object sender, EventArgs e)
         {
+            Form_editSearch form = new Form_editSearch(user_id, user_search);
+            form.ShowDialog(this);
 
+            user_search = form.user_search;
         }
     }
 }
