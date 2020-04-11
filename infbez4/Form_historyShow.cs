@@ -16,8 +16,11 @@ namespace infbez4
         {
             InitializeComponent();
             user_id = id;
+            isNavigate = false;
         }
 
         public Guid user_id;
+        public bool isNavigate;
+        public string url;
     }
 }

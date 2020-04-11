@@ -131,6 +131,7 @@ namespace infbez4
             this.web_navigatingORcomplete = false;
             this.btn_refreshOrStop.BackgroundImage = Properties.Resources.arrow;
             this.Cursor = Cursors.Arrow;
+            saveLinkInHystory(this.txt_url.Text);
         }
 
         // Происходит перед переходом элемента управления WebBrowser в новый документ.
@@ -207,10 +208,38 @@ namespace infbez4
             label_user_login.Text = user_login;
         }
 
-        // кнопка ПРОСМОТР ИСТОРИИ
+        // кнопка ПРОСМОТР ИСТОРИИ веб-сёрфинга
         private void MenuItem_showHistory_Click(object sender, EventArgs e)
         {
+            Form_historyShow form = new Form_historyShow(user_id);
+            form.ShowDialog(this);
 
+            if(form.isNavigate == true)
+            {
+                webBrowser1.Navigate(form.url);
+            }
+        }
+
+        // функция сохранения сайта в историю
+        private void saveLinkInHystory(string link)
+        {
+            NpgsqlConnection conn = new NpgsqlConnection(global.connectionString);
+            try
+            {
+                conn.Open();
+
+                NpgsqlCommand query = new NpgsqlCommand("INSERT INTO pmib6602.user_history (id, link) VALUES (@id, @link);", conn);
+
+                query.Parameters.AddWithValue("id", user_id);
+                query.Parameters.AddWithValue("link", link);
+
+                query.ExecuteNonQuery();
+            }
+            catch(Exception error)
+            {
+                //MessageBox.Show(error.Message);
+            }
+            conn.Close();
         }
 
         // кнопка СМЕНИТЬ ПОИСКОВИК
