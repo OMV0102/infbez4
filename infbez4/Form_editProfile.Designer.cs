@@ -38,6 +38,9 @@
             this.toolTip_UserPicture = new System.Windows.Forms.ToolTip(this.components);
             this.txt_role = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.txt_passwordNew = new System.Windows.Forms.TextBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.btn_passwordChange = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -74,6 +77,7 @@
             this.txt_login.Name = "txt_login";
             this.txt_login.Size = new System.Drawing.Size(318, 30);
             this.txt_login.TabIndex = 2;
+            this.txt_login.TextChanged += new System.EventHandler(this.txt_login_TextChanged);
             // 
             // label1
             // 
@@ -99,12 +103,13 @@
             // 
             this.btn_loginChange.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_loginChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_loginChange.Location = new System.Drawing.Point(347, 265);
+            this.btn_loginChange.Location = new System.Drawing.Point(220, 301);
             this.btn_loginChange.Name = "btn_loginChange";
             this.btn_loginChange.Size = new System.Drawing.Size(105, 30);
             this.btn_loginChange.TabIndex = 5;
             this.btn_loginChange.Text = "Сменить логин";
             this.btn_loginChange.UseVisualStyleBackColor = true;
+            this.btn_loginChange.Click += new System.EventHandler(this.btn_loginChange_Click);
             // 
             // toolTip_UserPicture
             // 
@@ -132,11 +137,51 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Логин";
             // 
+            // txt_passwordNew
+            // 
+            this.txt_passwordNew.BackColor = System.Drawing.Color.White;
+            this.txt_passwordNew.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.txt_passwordNew.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_passwordNew.Location = new System.Drawing.Point(7, 369);
+            this.txt_passwordNew.Name = "txt_passwordNew";
+            this.txt_passwordNew.Size = new System.Drawing.Size(318, 30);
+            this.txt_passwordNew.TabIndex = 8;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBox1.Location = new System.Drawing.Point(7, 335);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(231, 24);
+            this.checkBox1.TabIndex = 9;
+            this.checkBox1.Text = "Включить смену пароля";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // btn_passwordChange
+            // 
+            this.btn_passwordChange.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_passwordChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_passwordChange.Location = new System.Drawing.Point(94, 405);
+            this.btn_passwordChange.Name = "btn_passwordChange";
+            this.btn_passwordChange.Size = new System.Drawing.Size(168, 30);
+            this.btn_passwordChange.TabIndex = 10;
+            this.btn_passwordChange.Text = "Сохранить пароль";
+            this.btn_passwordChange.UseVisualStyleBackColor = true;
+            this.btn_passwordChange.Click += new System.EventHandler(this.btn_passwordChange_Click);
+            // 
             // Form_editProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(350, 444);
+            this.Controls.Add(this.btn_passwordChange);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.txt_passwordNew);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txt_role);
             this.Controls.Add(this.btn_loginChange);
@@ -167,5 +212,8 @@
         private System.Windows.Forms.ToolTip toolTip_UserPicture;
         private System.Windows.Forms.TextBox txt_role;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txt_passwordNew;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Button btn_passwordChange;
     }
 }
