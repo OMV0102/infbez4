@@ -35,6 +35,8 @@ namespace infbez4
         private string user_role;
         private bool web_navigatingORcomplete = false;
         private string urlnew = "";
+        //private string user_search = "yandex.ru";
+        private string user_search;
 
         // при ЗАКРЫТИИ формы
         private void Form_browser_FormClosed(object sender, FormClosedEventArgs e)
@@ -47,6 +49,31 @@ namespace infbez4
         {
             this.label_user_login.Text = user_login; // вывели логин вверху справа
             this.contextMenu_user.Cursor = Cursors.Hand; // курсор у меню = рука
+
+            // получения адреса поисковика по умолчанию у пользователя
+            user_search = global.searchDefault; // по умолчанию глобальный
+            try
+            {
+                NpgsqlConnection conn = new NpgsqlConnection(global.connectionString);
+                conn.Open();
+
+                NpgsqlCommand query = new NpgsqlCommand("SELECT link FROM pmib6602.search_default WHERE id = @id::uuid;", conn);
+
+                query.Parameters.AddWithValue("id", user_id);
+
+                var sqlReader = query.ExecuteReader();
+
+                if(sqlReader.Read() == true) // если введенный логин не найден
+                {
+                    user_search = sqlReader.GetString(0);
+                }
+                conn.Close();
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
+
             btn_GoHome.PerformClick(); // переход к домашней странице
         }
 
@@ -77,7 +104,7 @@ namespace infbez4
         // кнопка перейти к поисковику по умолчанию
         private void btn_GoHome_Click(object sender, EventArgs e)
         {
-            webBrowser1.Navigate(global.searchDefault);
+            webBrowser1.Navigate(user_search);
         }
 
         // кнопка ОБНОВИТЬ или СТОП загрузка
@@ -177,40 +204,18 @@ namespace infbez4
             Form_editProfile form = new Form_editProfile(user_id);
             form.ShowDialog(this);
 
-            /*try
-            {
-                NpgsqlConnection conn = new NpgsqlConnection(global.connectionString);
-                conn.Open();
-
-                NpgsqlCommand n = new NpgsqlCommand("SELECT id, TRIM(login), TRIM(password), TRIM(role), canlogin FROM pmib6602.users WHERE TRIM(login) = TRIM(@login);", conn);
-
-                n.Parameters.AddWithValue("login", user_login);
-
-                var sqlReader = n.ExecuteReader();
-
-                if(sqlReader.Read() == false) // если введенный логин не найден
-                {
-                    conn.Close();
-                    return;
-                }
-                Guid user_id = sqlReader.GetGuid(0);
-                user_login = sqlReader.GetString(1).ToLower();
-                password_table = sqlReader.GetString(2).ToLower();
-                user_role = sqlReader.GetString(3).ToLower();
-                global.canLogin = sqlReader.GetBoolean(4);
-                conn.Close();
-            }
-            catch(Exception error)
-            {
-                //MessageBox.Show(error.Message);
-            }*/
-
             user_login = form.user_login;
             label_user_login.Text = user_login;
         }
 
         // кнопка ПРОСМОТР ИСТОРИИ
         private void MenuItem_showHistory_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // кнопка СМЕНИТЬ ПОИСКОВИК
+        private void MenuItem_changeSearch_Click(object sender, EventArgs e)
         {
 
         }

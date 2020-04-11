@@ -28,23 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.txt_id = new System.Windows.Forms.TextBox();
             this.txt_login = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btn_ = new System.Windows.Forms.Button();
+            this.btn_loginChange = new System.Windows.Forms.Button();
+            this.toolTip_UserPicture = new System.Windows.Forms.ToolTip(this.components);
+            this.txt_role = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.BackgroundImage = global::infbez4.Properties.Resources.human;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.Cursor = System.Windows.Forms.Cursors.No;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Location = new System.Drawing.Point(7, 7);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 100);
             this.button1.TabIndex = 0;
+            this.toolTip_UserPicture.SetToolTip(this.button1, "К сожалению, пока что в данной версии приложения не поддерживается фотокарточка у" +
+        " пользователя :(");
             this.button1.UseVisualStyleBackColor = true;
             // 
             // txt_id
@@ -63,7 +70,7 @@
             this.txt_login.BackColor = System.Drawing.Color.White;
             this.txt_login.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.txt_login.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txt_login.Location = new System.Drawing.Point(7, 202);
+            this.txt_login.Location = new System.Drawing.Point(7, 265);
             this.txt_login.Name = "txt_login";
             this.txt_login.Size = new System.Drawing.Size(318, 30);
             this.txt_login.TabIndex = 2;
@@ -84,25 +91,55 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.Location = new System.Drawing.Point(12, 179);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 20);
+            this.label2.Size = new System.Drawing.Size(113, 20);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Логин";
+            this.label2.Text = "Роль доступа";
             // 
-            // btn_
+            // btn_loginChange
             // 
-            this.btn_.Location = new System.Drawing.Point(365, 192);
-            this.btn_.Name = "btn_";
-            this.btn_.Size = new System.Drawing.Size(75, 23);
-            this.btn_.TabIndex = 5;
-            this.btn_.Text = "button2";
-            this.btn_.UseVisualStyleBackColor = true;
+            this.btn_loginChange.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_loginChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_loginChange.Location = new System.Drawing.Point(347, 265);
+            this.btn_loginChange.Name = "btn_loginChange";
+            this.btn_loginChange.Size = new System.Drawing.Size(105, 30);
+            this.btn_loginChange.TabIndex = 5;
+            this.btn_loginChange.Text = "Сменить логин";
+            this.btn_loginChange.UseVisualStyleBackColor = true;
+            // 
+            // toolTip_UserPicture
+            // 
+            this.toolTip_UserPicture.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTip_UserPicture.ToolTipTitle = "Инфо";
+            // 
+            // txt_role
+            // 
+            this.txt_role.BackColor = System.Drawing.Color.White;
+            this.txt_role.Enabled = false;
+            this.txt_role.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.txt_role.Location = new System.Drawing.Point(7, 202);
+            this.txt_role.Name = "txt_role";
+            this.txt_role.ReadOnly = true;
+            this.txt_role.Size = new System.Drawing.Size(318, 27);
+            this.txt_role.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(12, 242);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(55, 20);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Логин";
             // 
             // Form_editProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btn_);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txt_role);
+            this.Controls.Add(this.btn_loginChange);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txt_id);
             this.Controls.Add(this.label1);
@@ -126,6 +163,9 @@
         private System.Windows.Forms.TextBox txt_login;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btn_;
+        private System.Windows.Forms.Button btn_loginChange;
+        private System.Windows.Forms.ToolTip toolTip_UserPicture;
+        private System.Windows.Forms.TextBox txt_role;
+        private System.Windows.Forms.Label label3;
     }
 }

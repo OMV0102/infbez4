@@ -59,7 +59,7 @@ namespace infbez4
                     this.label_status.Visible = true;
                     return;
                 }
-                Guid user_id = sqlReader.GetGuid(0);
+                user_id = sqlReader.GetGuid(0);
                 user_login = sqlReader.GetString(1).ToLower();
                 password_table = sqlReader.GetString(2).ToLower();
                 user_role = sqlReader.GetString(3).ToLower();

@@ -40,6 +40,8 @@
             this.MenuItem_showHistory = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_refreshOrStop = new System.Windows.Forms.Button();
             this.btn_GoHome = new System.Windows.Forms.Button();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.MenuItem_changeSearch = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenu_user.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -138,10 +140,12 @@
             this.contextMenu_user.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuItem_editProfile,
             this.toolStripSeparator1,
-            this.MenuItem_showHistory});
+            this.MenuItem_showHistory,
+            this.toolStripSeparator2,
+            this.MenuItem_changeSearch});
             this.contextMenu_user.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Table;
             this.contextMenu_user.Name = "contextMenu_user";
-            this.contextMenu_user.Size = new System.Drawing.Size(258, 58);
+            this.contextMenu_user.Size = new System.Drawing.Size(307, 110);
             // 
             // MenuItem_editProfile
             // 
@@ -149,7 +153,7 @@
             this.MenuItem_editProfile.Image = global::infbez4.Properties.Resources.human;
             this.MenuItem_editProfile.Name = "MenuItem_editProfile";
             this.MenuItem_editProfile.ShortcutKeyDisplayString = "";
-            this.MenuItem_editProfile.Size = new System.Drawing.Size(257, 24);
+            this.MenuItem_editProfile.Size = new System.Drawing.Size(306, 24);
             this.MenuItem_editProfile.Text = "Радактировать профиль";
             this.MenuItem_editProfile.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             this.MenuItem_editProfile.ToolTipText = "Радактирование логина и смена пароля";
@@ -158,14 +162,14 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(254, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(303, 6);
             // 
             // MenuItem_showHistory
             // 
             this.MenuItem_showHistory.AutoToolTip = true;
             this.MenuItem_showHistory.Image = global::infbez4.Properties.Resources.history;
             this.MenuItem_showHistory.Name = "MenuItem_showHistory";
-            this.MenuItem_showHistory.Size = new System.Drawing.Size(257, 24);
+            this.MenuItem_showHistory.Size = new System.Drawing.Size(306, 24);
             this.MenuItem_showHistory.Text = "Просмотр истории";
             this.MenuItem_showHistory.ToolTipText = "Просмотр посещенных веб страниц за все время";
             this.MenuItem_showHistory.Click += new System.EventHandler(this.MenuItem_showHistory_Click);
@@ -208,6 +212,21 @@
             this.btn_GoHome.UseVisualStyleBackColor = false;
             this.btn_GoHome.Click += new System.EventHandler(this.btn_GoHome_Click);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(303, 6);
+            // 
+            // MenuItem_changeSearch
+            // 
+            this.MenuItem_changeSearch.AutoToolTip = true;
+            this.MenuItem_changeSearch.Image = global::infbez4.Properties.Resources.house;
+            this.MenuItem_changeSearch.Name = "MenuItem_changeSearch";
+            this.MenuItem_changeSearch.Size = new System.Drawing.Size(306, 24);
+            this.MenuItem_changeSearch.Text = "Изменить домашнюю страницу";
+            this.MenuItem_changeSearch.ToolTipText = "Смена поисковой системы по умолчанию";
+            this.MenuItem_changeSearch.Click += new System.EventHandler(this.MenuItem_changeSearch_Click);
+            // 
             // Form_browser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -248,5 +267,7 @@
         private System.Windows.Forms.ToolStripMenuItem MenuItem_editProfile;
         private System.Windows.Forms.ToolStripMenuItem MenuItem_showHistory;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem MenuItem_changeSearch;
     }
 }

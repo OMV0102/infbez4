@@ -18,7 +18,6 @@ namespace infbez4
         //===============================
         public static int loginMaxLength = 20;
         //===============================
-        //public static string searchDefault = "google.com";
         public static string searchDefault = "yandex.ru";
     }
 }
