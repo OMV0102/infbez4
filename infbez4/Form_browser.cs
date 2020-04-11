@@ -51,9 +51,9 @@ namespace infbez4
 
             // получения адреса поисковика по умолчанию у пользователя
             user_search = global.searchDefault; // по умолчанию глобальный
+            NpgsqlConnection conn = new NpgsqlConnection(global.connectionString);
             try
             {
-                NpgsqlConnection conn = new NpgsqlConnection(global.connectionString);
                 conn.Open();
 
                 NpgsqlCommand query = new NpgsqlCommand("SELECT link FROM pmib6602.search_default WHERE id = @id::uuid;", conn);
@@ -66,12 +66,13 @@ namespace infbez4
                 {
                     user_search = sqlReader.GetString(0);
                 }
-                conn.Close();
+                
             }
             catch (Exception error)
             {
                 MessageBox.Show(error.Message);
             }
+            conn.Close();
 
             btn_GoHome.PerformClick(); // переход к домашней странице
         }
