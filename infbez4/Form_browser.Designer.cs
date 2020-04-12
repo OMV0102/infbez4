@@ -38,10 +38,10 @@
             this.MenuItem_editProfile = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuItem_showHistory = new System.Windows.Forms.ToolStripMenuItem();
-            this.btn_refreshOrStop = new System.Windows.Forms.Button();
-            this.btn_GoHome = new System.Windows.Forms.Button();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuItem_changeSearch = new System.Windows.Forms.ToolStripMenuItem();
+            this.btn_refreshOrStop = new System.Windows.Forms.Button();
+            this.btn_GoHome = new System.Windows.Forms.Button();
             this.contextMenu_user.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -74,6 +74,7 @@
             this.txt_url.ForeColor = System.Drawing.Color.White;
             this.txt_url.Location = new System.Drawing.Point(174, 5);
             this.txt_url.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_url.MaxLength = 100000;
             this.txt_url.Name = "txt_url";
             this.txt_url.Size = new System.Drawing.Size(847, 30);
             this.txt_url.TabIndex = 1;
@@ -145,7 +146,7 @@
             this.MenuItem_changeSearch});
             this.contextMenu_user.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Table;
             this.contextMenu_user.Name = "contextMenu_user";
-            this.contextMenu_user.Size = new System.Drawing.Size(307, 110);
+            this.contextMenu_user.Size = new System.Drawing.Size(307, 88);
             // 
             // MenuItem_editProfile
             // 
@@ -173,6 +174,21 @@
             this.MenuItem_showHistory.Text = "Просмотр истории";
             this.MenuItem_showHistory.ToolTipText = "Просмотр посещенных веб страниц за все время";
             this.MenuItem_showHistory.Click += new System.EventHandler(this.MenuItem_showHistory_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(303, 6);
+            // 
+            // MenuItem_changeSearch
+            // 
+            this.MenuItem_changeSearch.AutoToolTip = true;
+            this.MenuItem_changeSearch.Image = global::infbez4.Properties.Resources.house;
+            this.MenuItem_changeSearch.Name = "MenuItem_changeSearch";
+            this.MenuItem_changeSearch.Size = new System.Drawing.Size(306, 24);
+            this.MenuItem_changeSearch.Text = "Изменить домашнюю страницу";
+            this.MenuItem_changeSearch.ToolTipText = "Смена поисковой системы по умолчанию";
+            this.MenuItem_changeSearch.Click += new System.EventHandler(this.MenuItem_changeSearch_Click);
             // 
             // btn_refreshOrStop
             // 
@@ -211,21 +227,6 @@
             this.btn_GoHome.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btn_GoHome.UseVisualStyleBackColor = false;
             this.btn_GoHome.Click += new System.EventHandler(this.btn_GoHome_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(303, 6);
-            // 
-            // MenuItem_changeSearch
-            // 
-            this.MenuItem_changeSearch.AutoToolTip = true;
-            this.MenuItem_changeSearch.Image = global::infbez4.Properties.Resources.house;
-            this.MenuItem_changeSearch.Name = "MenuItem_changeSearch";
-            this.MenuItem_changeSearch.Size = new System.Drawing.Size(306, 24);
-            this.MenuItem_changeSearch.Text = "Изменить домашнюю страницу";
-            this.MenuItem_changeSearch.ToolTipText = "Смена поисковой системы по умолчанию";
-            this.MenuItem_changeSearch.Click += new System.EventHandler(this.MenuItem_changeSearch_Click);
             // 
             // Form_browser
             // 
