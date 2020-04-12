@@ -49,6 +49,8 @@ namespace infbez4
                 }
                 catch (Exception err)
                 {
+                    this.btn_entry.Enabled = true;
+                    this.Cursor = Cursors.Arrow;
                     MessageBox.Show("Не удалось установить соединение с базой данных!\nПожалуйста, повторите попытку позже...", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                     return;
                 }
