@@ -74,7 +74,7 @@ namespace infbez4
                     throw new Exception();
                 }
             }
-            catch(PingException error)
+            catch(Exception error)
             {
                 MessageBox.Show("Сайт по данному адресу не доступен!\nПопробуйте ввести другой адрес...", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
