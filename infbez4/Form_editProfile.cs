@@ -31,7 +31,15 @@ namespace infbez4
             try
             {
                 NpgsqlConnection conn = new NpgsqlConnection(global.connectionString);
-                conn.Open();
+                try
+                {
+                    conn.Open();
+                }
+                catch(Exception err)
+                {
+                    MessageBox.Show("Не удалось установить соединение с базой данных!\nПожалуйста, повторите попытку позже...", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                    return;
+                }
 
                 NpgsqlCommand query = new NpgsqlCommand("SELECT TRIM(login), TRIM(role) FROM pmib6602.users WHERE id = @id::uuid;", conn);
 
@@ -84,7 +92,15 @@ namespace infbez4
             try
             {
                 NpgsqlConnection conn = new NpgsqlConnection(global.connectionString);
-                conn.Open();
+                try
+                {
+                    conn.Open();
+                }
+                catch(Exception err)
+                {
+                    MessageBox.Show("Не удалось установить соединение с базой данных!\nПожалуйста, повторите попытку позже...", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                    return;
+                }
 
                 NpgsqlCommand query = new NpgsqlCommand("UPDATE pmib6602.users SET login = TRIM(@login_new) WHERE id = @id::uuid;", conn);
 
@@ -148,7 +164,15 @@ namespace infbez4
             try
             {
                 NpgsqlConnection conn = new NpgsqlConnection(global.connectionString);
-                conn.Open();
+                try
+                {
+                    conn.Open();
+                }
+                catch(Exception err)
+                {
+                    MessageBox.Show("Не удалось установить соединение с базой данных!\nПожалуйста, повторите попытку позже...", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                    return;
+                }
 
                 NpgsqlCommand query = new NpgsqlCommand("UPDATE pmib6602.users SET password = TRIM(@password_new) WHERE id = @id::uuid;", conn);
 

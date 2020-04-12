@@ -43,7 +43,15 @@ namespace infbez4
             try
             {
                 NpgsqlConnection conn = new NpgsqlConnection(global.connectionString);
-                conn.Open();
+                try
+                {
+                    conn.Open();
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show("Не удалось установить соединение с базой данных!\nПожалуйста, повторите попытку позже...", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                    return;
+                }
 
                 NpgsqlCommand n = new NpgsqlCommand("SELECT id, TRIM(login), TRIM(password), TRIM(role), canlogin FROM pmib6602.users WHERE TRIM(login) = TRIM(@login);", conn);
 
@@ -131,7 +139,15 @@ namespace infbez4
             try
             {
                 NpgsqlConnection conn = new NpgsqlConnection(global.connectionString);
-                conn.Open();
+                try
+                {
+                    conn.Open();
+                }
+                catch(Exception err)
+                {
+                    MessageBox.Show("Не удалось установить соединение с базой данных!\nПожалуйста, повторите попытку позже...", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                    return;
+                }
 
                 NpgsqlCommand n = new NpgsqlCommand("UPDATE pmib6602.users SET canlogin = @canlogin WHERE TRIM(login) = TRIM(@login);", conn);
 
@@ -165,7 +181,15 @@ namespace infbez4
             try
             {
                 NpgsqlConnection conn = new NpgsqlConnection(global.connectionString);
-                conn.Open();
+                try
+                {
+                    conn.Open();
+                }
+                catch(Exception err)
+                {
+                    MessageBox.Show("Не удалось установить соединение с базой данных!\nПожалуйста, повторите попытку позже...", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                    return;
+                }
 
                 NpgsqlCommand n = new NpgsqlCommand("INSERT INTO pmib6602.users (id, login, password, role) VALUES (pmib6602.get_uuid(),  @login, @password, @role);", conn);
 

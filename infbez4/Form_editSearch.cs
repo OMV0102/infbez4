@@ -43,7 +43,15 @@ namespace infbez4
                     try
                     {
                         NpgsqlConnection conn = new NpgsqlConnection(global.connectionString);
-                        conn.Open();
+                        try
+                        {
+                            conn.Open();
+                        }
+                        catch(Exception err)
+                        {
+                            MessageBox.Show("Не удалось установить соединение с базой данных! Пожалуйста, повторите попытку позже...", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                            return;
+                        }
 
                         NpgsqlCommand query = new NpgsqlCommand("UPDATE pmib6602.search_default SET link = TRIM(@link_new) WHERE id = @id::uuid;", conn);
 

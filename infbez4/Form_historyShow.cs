@@ -33,7 +33,15 @@ namespace infbez4
             NpgsqlConnection conn = new NpgsqlConnection(global.connectionString);
             try
             {
-                conn.Open();
+                try
+                {
+                    conn.Open();
+                }
+                catch(Exception err)
+                {
+                    MessageBox.Show("Не удалось установить соединение с базой данных! Пожалуйста, повторите попытку позже...", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                    return;
+                }
 
                 NpgsqlCommand query = new NpgsqlCommand("SELECT link FROM pmib6602.user_history WHERE id = @id::uuid;", conn);
 
@@ -74,7 +82,15 @@ namespace infbez4
             NpgsqlConnection conn = new NpgsqlConnection(global.connectionString);
             try
             {
-                conn.Open();
+                try
+                {
+                    conn.Open();
+                }
+                catch(Exception err)
+                {
+                    MessageBox.Show("Не удалось установить соединение с базой данных! Пожалуйста, повторите попытку позже...", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                    return;
+                }
 
                 NpgsqlCommand query = new NpgsqlCommand("DELETE FROM pmib6602.user_history WHERE id = @id::uuid;", conn);
 
