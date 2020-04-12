@@ -27,6 +27,7 @@ namespace infbez4
             return BitConverter.ToString(byteArr).Replace("-", "").ToUpper();
         }
 
+        // получение хэша SHA256 от строки
         public static string getHash(string str)
         {
             return functions.ByteArrayToStringHEX(SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(str))).ToLower();
