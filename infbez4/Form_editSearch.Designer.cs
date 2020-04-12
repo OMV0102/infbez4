@@ -48,7 +48,7 @@
             // 
             // txt_link
             // 
-            this.txt_link.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txt_link.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txt_link.Location = new System.Drawing.Point(7, 17);
             this.txt_link.Name = "txt_link";
             this.txt_link.Size = new System.Drawing.Size(425, 29);
