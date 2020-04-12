@@ -101,7 +101,7 @@
             this.MinimizeBox = false;
             this.Name = "Form_captha";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Captha";
+            this.Text = "Введите текст с картинки";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_captha_FormClosing);
             this.Load += new System.EventHandler(this.Form_captha_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
