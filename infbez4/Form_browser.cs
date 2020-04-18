@@ -251,14 +251,17 @@ namespace infbez4
                 }
                 catch(Exception err)
                 {
-                    MessageBox.Show("Не удалось установить соединение с базой данных!\nПожалуйста, повторите попытку позже...", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                    //MessageBox.Show("Не удалось установить соединение с базой данных!\nПожалуйста, повторите попытку позже...", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                     return;
                 }
 
                 NpgsqlCommand query = new NpgsqlCommand("INSERT INTO pmib6602.user_history (id, link) VALUES (@id, @link);", conn);
+                //NpgsqlCommand query = new NpgsqlCommand("INSERT INTO pmib6602.user_history (id, link, ip, datetime) VALUES (@id, @link, @ip, @datetime);", conn);
 
                 query.Parameters.AddWithValue("id", user_id);
                 query.Parameters.AddWithValue("link", link);
+                //query.Parameters.AddWithValue("ip", link);
+                //query.Parameters.AddWithValue("datetime", link);
 
                 query.ExecuteNonQuery();
             }
